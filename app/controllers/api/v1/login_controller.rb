@@ -21,6 +21,11 @@ class Api::V1::LoginController < ApplicationController
     end
   end
 
+  def destroy
+    session[:current_user] = nil
+    render json: { status: 200, message: 'Logout successful' }
+  end
+
   private
 
   def params_login_credentials

@@ -24,7 +24,6 @@ default: &default
 development:
   <<: *default
   database: dummybummy_development
-
   # Muhammad's database credentials
   # username: postgres
   # password: maejor123
