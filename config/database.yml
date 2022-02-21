@@ -24,9 +24,11 @@ default: &default
 development:
   <<: *default
   database: dummybummy_development
-  username: postgres
-  password: maejor123
-  host: localhost
+
+  # Muhammad's database credentials
+  # username: postgres
+  # password: maejor123
+  # host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
