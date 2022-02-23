@@ -21,7 +21,7 @@ class Api::V1::ReservationsController < ApplicationController
       if new_reservation.save
         render json: { status: 200, message: 'car reserved successfully' }
       else
-        render json: { status: 400, message: 'unable to reserved car.' }
+        render json: { status: 400, message: "no match found for car id: #{params[:car_id]}" }
       end
     end
   end
@@ -39,15 +39,10 @@ class Api::V1::ReservationsController < ApplicationController
 
   # /api/v1/users/:user_id/cars/:car_id/reservations/:id
   def destroy
-    @reservation = Reservation.find(params[:id])
-
-    if @reservation
-      @reservation.destroy
-
-      render json: { status: 200, message: 'car reservation deleted' }
-    else
-      render json: { status: 400, message: "unable to find reservation with id: #{params[:id]}" }
-    end
+    @reservation = Reservation.find(params[:id]).destroy!
+    render json: { status: 200, message: 'car reservation deleted' }
+  rescue ActiveRecord::RecordNotFound
+    render json: { status: 400, message: "no match found for reservation with id: #{params[:id]}" }
   end
 
   private
