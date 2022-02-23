@@ -37,7 +37,18 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  def destroy; end
+  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  def destroy
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation
+      @reservation.destroy
+
+      render json: { status: 200, message: 'car reservation deleted' }
+    else
+      render json: { status: 400, message: "unable to find reservation with id: #{params[:id]}" }
+    end
+  end
 
   private
 
