@@ -1,11 +1,11 @@
 class Car < ApplicationRecord
   has_many :reservations, dependent: :destroy
+  has_one_attached :image
 
   validates :user_id, presence: true
+  validates :decription, presence: true
+  validates :model_info, presence: true
   validates :name, presence: true
   validates :image, presence: true
-  validates :price, presence: true
-  validates :duration, presence: true
   validates :reservation_fee, presence: true
-  validates :number_of_seats, presence: true
 end

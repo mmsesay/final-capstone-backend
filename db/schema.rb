@@ -44,8 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_135226) do
 
   create_table "cars", force: :cascade do |t|
     t.string "name"
-    t.text "description"
     t.string "image"
+    t.text "description"
     t.string "model_info"
     t.integer "reservation_fee"
     t.integer "user_id"
