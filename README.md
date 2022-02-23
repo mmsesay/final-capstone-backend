@@ -8,7 +8,7 @@ The project is used for project where a user can rent a flat. The endpoints give
 
 [Link to Front end Project Repo](https://github.com/)
 
-## Kanban board
+## Kanban board 🤍
 - [Kanban board link](https://github.com/mmsesay/final-capstone-backend/projects/1#card-77937550)
 
 ## Built With
