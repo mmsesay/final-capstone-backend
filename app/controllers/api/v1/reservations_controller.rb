@@ -7,12 +7,22 @@ class Api::V1::ReservationsController < ApplicationController
 
   # /api/v1/users/:user_id/cars/:car_id/reservations
   def create
-    new_reservation = Reservation.new(params_create_reservation)
+    @reserved_car = Reservation.find_by(car_id: params[:car_id])
 
-    if new_reservation.save
-      render json: { status: 200, message: 'car reserved successfully' }
+    # check if a car has been reserved
+    if @reserved_car
+      render json: {
+        status: 400,
+        message: "Car with id: #{@reserved_car.id} has been reserved. Please choose another one."
+      }
     else
-      render json: { status: 400, message: 'unable to reserved car.' }
+      new_reservation = Reservation.new(params_create_reservation)
+
+      if new_reservation.save
+        render json: { status: 200, message: 'car reserved successfully' }
+      else
+        render json: { status: 400, message: 'unable to reserved car.' }
+      end
     end
   end
 
@@ -28,6 +38,8 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy; end
+
+  private
 
   def params_create_reservation
     params.permit(:duration, :user_id, :car_id)
