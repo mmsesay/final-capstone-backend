@@ -11,11 +11,11 @@ module Api
         # lookup for existing user
         existing_user = User.find_by(username: params_login_credentials[:username])
 
-    if existing_user
-      pass_current_user(existing_user) # pass the existing_user
-      render json: { status: 200, message: 'Login successfully' }
-    else
-      new_user = User.new(params_login_credentials)
+        if existing_user
+          pass_current_user(existing_user) # pass the existing_user
+          render json: { status: 200, message: 'Login successfully' }
+        else
+          new_user = User.new(params_login_credentials)
 
           new_user.save
           render json: new_user, status: :created
