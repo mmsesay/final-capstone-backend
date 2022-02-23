@@ -14,7 +14,6 @@ module Api
     if existing_user
       pass_current_user(existing_user) # pass the existing_user
       render json: { status: 200, message: 'Login successfully' }
-      # render json: { status: 400, message: 'Username already exist.' }
     else
       new_user = User.new(params_login_credentials)
 
