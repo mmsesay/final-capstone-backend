@@ -131,6 +131,8 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.1-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
@@ -210,6 +212,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2021.5)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
@@ -228,6 +232,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
