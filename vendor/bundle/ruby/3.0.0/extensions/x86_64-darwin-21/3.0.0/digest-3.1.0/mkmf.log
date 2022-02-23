@@ -1,0 +1,37 @@
+have_type: checking for u_int8_t... -------------------- yes
+
+"clang -fdeclspec -o conftest -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"clang -fdeclspec -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: typedef u_int8_t conftest_type;
+5: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_header: checking for sys/cdefs.h... -------------------- yes
+
+"clang -E -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/cdefs.h>
+/* end */
+
+--------------------
+

@@ -38,3 +38,5 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/HashSyntax:
   Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false

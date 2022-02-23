@@ -1,0 +1,108 @@
+have_func: checking for rb_io_wait()... -------------------- yes
+
+"clang -fdeclspec -o conftest -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"clang -fdeclspec -o conftest -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+conftest.c:14:57: error: use of undeclared identifier 'rb_io_wait'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_io_wait; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_io_wait; return !p; }
+/* end */
+
+"clang -fdeclspec -o conftest -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe conftest.c  -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib -L. -L/Users/Muhammad/.rbenv/versions/3.0.1/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.3.0   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: extern void rb_io_wait();
+15: int t(void) { rb_io_wait(); return 0; }
+/* end */
+
+--------------------
+
+"clang -fdeclspec -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe   -c conftest.c"
+conftest.c:6:3: error: 
+# error
+  ^
+conftest.c:7:1: error: expected identifier or '('
+|:/ === DOSISH undefined === /:|
+^
+2 errors generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: /*top*/
+5: #ifndef DOSISH
+6: # error
+7: |:/ === DOSISH undefined === /:|
+8: #endif
+/* end */
+
+have_header: checking for sys/ioctl.h... -------------------- yes
+
+"clang -E -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/ioctl.h>
+/* end */
+
+--------------------
+
+have_macro: checking for FIONREAD in sys/ioctl.h,sys/ioctl.h... -------------------- yes
+
+"clang -fdeclspec -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/x86_64-darwin21 -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0/ruby/backward -I/Users/Muhammad/.rbenv/versions/3.0.1/include/ruby-3.0.0 -I. -I/Users/Muhammad/.rbenv/versions/3.0.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/ioctl.h>
+4: #include <sys/ioctl.h>
+5: /*top*/
+6: #ifndef FIONREAD
+7: # error
+8: |:/ === FIONREAD undefined === /:|
+9: #endif
+/* end */
+
+--------------------
+
