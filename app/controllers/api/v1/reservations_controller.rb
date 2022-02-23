@@ -3,8 +3,6 @@ class Api::V1::ReservationsController < ApplicationController
 
   def index; end
 
-  def new; end
-
   def show; end
 
   # /api/v1/users/:user_id/cars/:car_id/reservations
@@ -14,17 +12,28 @@ class Api::V1::ReservationsController < ApplicationController
     if new_reservation.save
       render json: { status: 200, message: 'car reserved successfully' }
     else
-      render json: { status: 400, message: 'Unable to reserved car.' }
+      render json: { status: 400, message: 'unable to reserved car.' }
     end
   end
 
-  def edit; end
+  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  def update
+    @reservation = Reservation.find(params[:id])
 
-  def update; end
+    if @reservation.update(params_update_reservation)
+      render json: { status: 200, message: 'car reservation updated' }
+    else
+      render json: { status: 400, message: 'unable to update reservation' }
+    end
+  end
 
   def destroy; end
 
   def params_create_reservation
     params.permit(:duration, :user_id, :car_id)
+  end
+
+  def params_update_reservation
+    params.permit(:duration, :car_id)
   end
 end
