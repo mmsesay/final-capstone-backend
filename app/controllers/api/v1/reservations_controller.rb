@@ -10,12 +10,16 @@ class Api::V1::ReservationsController < ApplicationController
   def show
     @reservations = Reservation.includes(:car).find_by(user_id: params[:user_id])
 
-    @data = {
-      reservation: @reservations,
-      reserved_car: @reservations.car,
-      user_info: @reservations.user
-    }
-    render json: @data, except: :image
+    if @reservations
+      @data = {
+        reservation: @reservations,
+        reserved_car: @reservations.car,
+        user_info: @reservations.user
+      }
+      render json: @data, except: :image
+    else
+      render json: { status: 400, message: 'Invalid user_id' }
+    end
   end
 
   # /api/v1/users/:user_id/cars/:car_id/reservations
