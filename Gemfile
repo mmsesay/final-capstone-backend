@@ -9,6 +9,9 @@ gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# gem 'puma', '~> 3.8'
+
+gem 'rexml'
 
 gem 'sprockets-rails'
 
