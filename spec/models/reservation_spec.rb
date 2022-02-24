@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   before(:each) do
-    @user = User.new(username: 'John Doe')
-    @car = Car.new(name: 'Car 1', image: 'photo_url', description: 'description 1', model_info: 'model 1', reservation_fee: '150', user_id: @user.id)
-
-    @reservation = Reservation.new(duration: '4', user_id: @user.id, car_id: @car.id)
+    @reservation = Reservation.new(duration: '4', user_id: 1, car_id: 2)
   end
 
   describe 'reservation validation tests' do
