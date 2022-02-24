@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :login, only: [:index, :create]
       delete 'logout', to: 'login#destroy'
       resources :users, only: [:index] do
+        get 'reservations', to: 'reservations#show'
         resources :cars do
           resources :reservations
         end

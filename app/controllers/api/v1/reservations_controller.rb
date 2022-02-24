@@ -1,9 +1,22 @@
 class Api::V1::ReservationsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def index; end
+  def index
+    @reservations = Reservation.all
+    render json: @reservations
+  end
 
-  def show; end
+  # /api/v1/users/:user_id/reservations
+  def show
+    @reservations = Reservation.includes(:car).find_by(user_id: params[:user_id])
+
+    @data = {
+      reservation: @reservations,
+      reserved_car: @reservations.car,
+      user_info: @reservations.user
+    }
+    render json: @data, except: :image
+  end
 
   # /api/v1/users/:user_id/cars/:car_id/reservations
   def create
