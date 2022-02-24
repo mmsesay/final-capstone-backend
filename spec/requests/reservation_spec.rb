@@ -32,4 +32,3 @@ RSpec.describe 'reservations controller', type: :request do
     end
   end
 end
-
