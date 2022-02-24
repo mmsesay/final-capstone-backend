@@ -5,10 +5,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :image
       t.text :description
       t.string :model_info
-      t.integer :number_of_seats
-      t.integer :price
       t.integer :reservation_fee
-      t.integer :duration
       t.integer :user_id
 
       t.timestamps

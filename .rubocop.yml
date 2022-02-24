@@ -7,6 +7,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "vendor/bundle/**/*"
 
   DisplayCopNames: true
 
@@ -35,4 +36,10 @@ Metrics/ModuleLength:
 Style/GlobalVars:
   Enabled: false
 Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Lint/EmptyFile:
   Enabled: false
