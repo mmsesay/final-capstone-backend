@@ -41,3 +41,5 @@ Style/HashSyntax:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Lint/EmptyFile:
+  Enabled: false

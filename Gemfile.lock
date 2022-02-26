@@ -137,6 +137,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.1.0)
       ast (~> 2.4.1)
@@ -234,6 +236,7 @@ GEM
 PLATFORMS
   ruby
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -243,7 +246,6 @@ DEPENDENCIES
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.2, >= 7.0.2.2)
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   sprockets-rails
