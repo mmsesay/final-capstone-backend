@@ -13,12 +13,13 @@ class Api::V1::CarsController < ApplicationController
 
     def create
         @car = Car.new(car_params)
+    
         if @car.save
-            render json: @car
+          render json: { status: 200, message: 'new car created successfully' }
         else
-            render error: { error: "could not create it"}, status: 400
+          render error: { status: 400, error: 'could not create car' }
         end
-    end
+      end
 
     def update
         @car = Car.find(params[:id])
@@ -41,7 +42,7 @@ class Api::V1::CarsController < ApplicationController
     end
 
     def car_params
-        params.require(:car).permit(:user_id :decription :model_info :name :image :reservation_fee)
+        params.permit(:user_id, :description, :model_info, :name, :image, :reservation_fee)
     end
 
 
