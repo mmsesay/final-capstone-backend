@@ -33,19 +33,16 @@ class Api::V1::CarsController < ApplicationController
         end
     end
 
-    def destory 
-        @car = Car.find(params[:id])
-        if @car
-            @car.destory
-            render json: { massage: 'Car successfully deleted.' }, status: 200
-        else
-            render json:{error: 'Unable to delete Car.'}, status: 400
-        end
+    # /api/v1/users/:user_id/cars/:id
+    def destroy
+        @car = Car.find(params[:id]).destroy!
+        render json: { status: 200, message: 'car deleted successfully' }
+        rescue ActiveRecord::RecordNotFound
+        render json: { status: 400, message: "no match found for car with id: #{params[:id]}" }
     end
 
     def car_params
         params.permit(:user_id, :description, :model_info, :name, :image, :reservation_fee)
     end
-
 
 end
