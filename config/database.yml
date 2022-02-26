@@ -25,15 +25,9 @@ development:
   <<: *default
   database: dummybummy_development
   # Muhammad's database credentials
-<<<<<<< HEAD
-  #username: postgres
-  #password: maejor123
+  #username: microverse
+  #password: collinstatang237
   #host: localhost
-=======
-  # username: postgres
-  # password: maejor123
-  # host: localhost
->>>>>>> 254ee214cc20d71c5161fd2668f358319476f990
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
