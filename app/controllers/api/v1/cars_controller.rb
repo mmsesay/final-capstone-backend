@@ -1,16 +1,17 @@
 class Api::V1::CarsController < ApplicationController
     skip_before_action :verify_authenticity_token
-    
+    # /api/v1/cars
     def index 
         @cars = Car.all
         render json: @cars
     end
 
+    #
     def show 
         @car = Car.find(params[:id])
         render json: @car
     end
-
+# /api/v1/users/:user_id/cars/:id
     def create
         @car = Car.new(car_params)
     
@@ -20,14 +21,15 @@ class Api::V1::CarsController < ApplicationController
           render error: { status: 400, error: 'could not create car' }
         end
       end
-
+    # /api/v1/users/:user_id/cars/:id
     def update
         @car = Car.find(params[:id])
+
         if @car
             @car.update(car_params)
-            render json: { massage: 'Car successfully updated.'}, status: 200
-        else
-            render json: {error: 'Unable to update car.' }, status:400
+            render json: { status: 200, massage: 'Car successfully updated.'}
+            else
+            render json: { status: 400, error: 'Unable to update car.' }
         end
     end
 
