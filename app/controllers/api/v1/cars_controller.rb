@@ -58,15 +58,4 @@ class Api::V1::CarsController < ApplicationController
 
     @data
   end
-
-  def car_object(car)
-    @object = {
-      name: car.name,
-      description: car.description,
-      model_info: car.model_info,
-      reservation_fee: car.reservation_fee,
-      user_id: car.user_id,
-      image: Cloudinary::Utils.cloudinary_url(car.image.key)
-    }
-  end
 end

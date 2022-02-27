@@ -13,10 +13,10 @@ class Api::V1::ReservationsController < ApplicationController
     if @reservations
       @data = {
         reservation: @reservations,
-        reserved_car: @reservations.car,
+        reserved_car: car_object(@reservations.car),
         user_info: @reservations.user
       }
-      render json: @data, except: :image
+      render json: @data
     else
       render json: { status: 400, message: 'Invalid user_id' }
     end
