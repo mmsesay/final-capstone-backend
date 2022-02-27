@@ -10,7 +10,7 @@ class Api::V1::CarsController < ApplicationController
   # /api/v1/users/:user_id/cars/:id
   def show
     @car = Car.find(params[:id])
-    render json: @car
+    render json: car_object(@car)
   end
 
   # /api/v1/users/:user_id/cars/:id
@@ -53,18 +53,20 @@ class Api::V1::CarsController < ApplicationController
     @data = []
 
     cars.each do |car|
-      @object = {
-        name: car.name,
-        description: car.description,
-        model_info: car.model_info,
-        reservation_fee: car.reservation_fee,
-        user_id: car.user_id,
-        image: Cloudinary::Utils.cloudinary_url(car.image.key)
-      }
-
-      @data << @object
+      @data << car_object(car)
     end
 
     @data
+  end
+
+  def car_object(car)
+    @object = {
+      name: car.name,
+      description: car.description,
+      model_info: car.model_info,
+      reservation_fee: car.reservation_fee,
+      user_id: car.user_id,
+      image: Cloudinary::Utils.cloudinary_url(car.image.key)
+    }
   end
 end
