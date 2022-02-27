@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   def car_object(car)
     @object = {
+      id: car.id,
       name: car.name,
       description: car.description,
       model_info: car.model_info,
