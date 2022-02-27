@@ -1,48 +1,21 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: Final Capstone Backend
   version: v1
 
-  description: "Final capstone backend"
+  description: "This Final capstone backend is built using ruby on rails and performs CRUD operations for a car reservation and management service."
 
 paths:
-  "/signup":
-    post:
-      summary: Creates a user
-      tags:
-        - Sign Up
-      parameters: []
-      responses:
-        "201":
-          description: user created
-        "422":
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-              required:
-                - name
-                - username
-                - email
-  "/signin":
+  "/login":
     post:
       summary: Logs in user
       tags:
-        - Sign In
+        - Auth
       parameters: []
       responses:
         "201":
-          description: user logged in
+          description: Login successfully
         "422":
           description: invalid request
       requestBody:
@@ -56,15 +29,237 @@ paths:
               required:
                 - username
 
-  "/reservations":
+  "/logout":
+    delete:
+      summary: Logs out a user
+      tags:
+        - Auth
+      parameters: []
+      responses:
+        "201":
+          description: Login successfully
+        "422":
+          description: invalid request
+
+  "/cars":
+    get:
+      summary: Gets all cars
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "200":
+          description: All found cars
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  model_info:
+                    type: string
+                  reservation_fee:
+                    type: string
+                  user_id:
+                    type: integer
+                  image:
+                    type: string
+        "422":
+          description: invalid request
+    
+  "/users/{user_id}/cars/{id}":
+    get:
+      summary: Get a user car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "200":
+          description: all user cars
+        "422":
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+
     post:
-      summary: Creates reservation for current user
+      summary: Create a car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "201":
+          description: new car created successfully
+        "400":
+          description: could not create car
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+              required:
+                - name
+                - description
+                - model_info
+                - reservation_fee
+                - user_id
+                - image
+
+    patch:
+      summary: Update a car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "201":
+          description: Car successfully updated.
+        "400":
+          description: Unable to update car.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+
+    delete:
+      summary: Delete a specified car
+      tags:
+        - Cars
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+
+            type: integer
+      responses:
+        "200":
+          description: car deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+
+                required:
+                  - id
+        "400":
+          description: Unable to update car.
+    
+  "/users/{user_id}/reservations":
+    get:
+      summary: Get a specific user reservations
       tags:
         - Reservations
       parameters: []
       responses:
-        "201":
-          description: creates reservation for current user
+        "200":
+          description: all user reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    reservation:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        duration:
+                          type: integer
+                        user_id:
+                          type: integer
+                        car_id:
+                          type: integer
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                    reserved_car:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        model_info:
+                          type: string
+                        reservation_fee:
+                          type: string
+                        user_id:
+                          type: integer
+                        image:
+                          type: string
+                    user_info:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        username:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                    
         "422":
           description: invalid request
       requestBody:
@@ -75,177 +270,67 @@ paths:
               properties:
                 user_id:
                   type: integer
+              required:
+                - user_id
+
+  "/users/{user_id}/cars/{car_id}/reservations":
+    post:
+      summary: Create a reservation
+      tags:
+        - Reservations
+      parameters: []
+      responses:
+        "201":
+          description: car reserved successfully
+        "400":
+          description: could not create reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
                 car_id:
                   type: integer
-                city_id:
-                  type: integer
-                start_date:
-                  type: string
-                end_date:
+                duration:
                   type: string
               required:
                 - user_id
-                - city_id
                 - car_id
-                - start_date
-                - end_date
-
-  "/cars":
-    get:
-      summary: Gets all cars
+                - duration
+  
+  "/users/{user_id}/cars/{car_id}/reservations/{id}":
+    patch:
+      summary: Update a reservation
       tags:
-        - Cars
+        - Reservations
       parameters: []
       responses:
-        "201":
-          description: gets all cars
-        "422":
-          description: invalid request
-
-    "/cars":
-    post:
-      summary: Creates new car
-      tags:
-        - Cars
-      parameters: []
-      responses:
-        "201":
-          description: creates new car
-        "422":
-          description: invalid request
+        "200":
+          description: car reservation updated
+        "400":
+          description: unable to update reservation
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                price:
+                user_id:
                   type: integer
-                image:
-                  type: string
+                car_id:
+                  type: integer
                 duration:
-                  type: integer
-                number_of_seats:
-                  type: integer
+                  type: string
               required:
-                - name
-                - price
+                - car_id
+                - user_id
                 - duration
-                - number_of_seats
 
-  "/cities":
-    get:
-      summary: Gets all cities
-      tags:
-        - Cities
-      parameters: []
-      responses:
-        "201":
-          description: gets all cities
-        "422":
-          description: invalid request
-
-    "/cities":
-    post:
-      summary: Creates new car
-      tags:
-        - Cities
-      parameters: []
-      responses:
-        "201":
-          description: creates new car
-        "422":
-          description: invalid request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                price:
-                  type: integer
-                image:
-                  type: string
-                duration:
-                  type: integer
-                number_of_seats:
-                  type: integer
-              required:
-                - name
-                - price
-                - duration
-                - number_of_seats
-
-  "/cars/{id}":
     delete:
-      summary: Deletes a specified car
-      tags:
-        - Cars
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-
-            type: integer
-      responses:
-        "200":
-          description: car found and deleted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-
-                required:
-                  - id
-        "404":
-          description: car not found
-        "406":
-          description: unsupported accept header
-
-  "/cities/{id}":
-    delete:
-      summary: Deletes a specified city
-      tags:
-        - Cities
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: city found and deleted
-          content:
-            application/json:
-
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                required:
-                  - id
-        "404":
-          description: city not found
-        "406":
-          description: unsupported accept header
-
-  "/reservations/{id}":
-    delete:
-      summary: Deletes a specified reservation
+      summary: Delete a specified reservation
       tags:
         - Reservations
       parameters:
@@ -253,10 +338,11 @@ paths:
           in: path
           required: true
           schema:
+
             type: integer
       responses:
         "200":
-          description: reservation found and deleted
+          description: car reservation deleted
           content:
             application/json:
               schema:
@@ -264,43 +350,20 @@ paths:
                 properties:
                   id:
                     type: integer
-                required:
-                  - id
-        "404":
-          description: reservation not found
-        "406":
-          description: unsupported accept header
-
-  "/reservations/{user_id}":
-    get:
-      summary: Gets reservations for a specified user
-      tags:
-        - Reservations
-      parameters:
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: user found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
                   user_id:
                     type: integer
+                  car_id:
+                    type: integer
                 required:
+                  - id
+                  - car_id
                   - user_id
-        "404":
-          description: user not found
-        "406":
-          description: unsupported accept header
+        "400":
+          description: no match found for reservation with id {id}
 
 servers:
-  - url: 
+  - url:
+    description: https://rails-cars-app.herokuapp.com/api/v1/
     variables:
       defaultHost:
         default: 

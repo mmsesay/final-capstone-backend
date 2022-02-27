@@ -1,0 +1,29 @@
+require 'swagger_helper'
+
+RSpec.describe 'api/login_contoller', type: :request do
+  # path '/login' do
+  #   post 'Logs the user in' do
+  #     tags 'Login'
+  #     consumes 'application/json'
+  #     parameter name: :user, in: :body, schema: {
+  #       type: :object,
+  #       properties: {
+  #         username: { type: :string }
+  #       },
+  #       required: [ 'username']
+  #     }
+
+  #     response '201', 'login successfully' do
+  #       let(:user) {
+  #         {
+  #           id: 1,
+  #           username: 'maej',
+  #           created_at: '2022-02-27T11:51:46.955Z',
+  #           updated_at: '2022-02-27T11:51:46.955Z'
+  #         }
+  #       }
+  #       run_test!
+  #     end
+  #   end
+  # end
+end
