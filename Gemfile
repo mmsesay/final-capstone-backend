@@ -8,6 +8,10 @@ gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 
 gem 'figaro'
 
+gem 'active_model_serializers'
+
+gem 'cloudinary'
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

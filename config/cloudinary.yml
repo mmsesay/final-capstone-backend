@@ -8,4 +8,5 @@ production:
   cloud_name: "maej"
   api_key: "419568522474133"
   api_secret: "T7blRfjfKRhLWKXNoyh8QOJ51dM"
-  secure:true
+  secure: true
+  cdn_subdomain: true
