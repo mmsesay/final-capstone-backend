@@ -29,7 +29,7 @@ class Api::V1::CarsController < ApplicationController
 
     if @car
       @car.update(car_params)
-      render json: { status: 200, massage: 'Car successfully updated.'}
+      render json: { status: 200, massage: 'Car successfully updated.' }
     else
       render json: { status: 400, error: 'Unable to update car.' }
     end
