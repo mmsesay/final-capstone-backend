@@ -1,0 +1,20 @@
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+/Users/Muhammad/.rbenv/versions/3.0.1/bin/ruby -I /Users/Muhammad/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20220226-22640-2zq8cd.rb extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... no
+checking for rb_scheduler_timeout()... no
+creating Makefile
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\= clean
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\=
+compiling console.c
+linking shared-object io/console.bundle
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/io-console-0.5.11/ext/io/console
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 console.bundle ./.gem.20220226-22640-yle6is/io
