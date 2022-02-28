@@ -26,6 +26,7 @@ class Api::V1::CarsController < ApplicationController
   # /api/v1/users/:user_id/cars/:id
   def update
     @car = Car.find(params[:id])
+    @car.user_id = current_user.id
 
     if @car
       @car.update(car_params)
@@ -46,7 +47,7 @@ class Api::V1::CarsController < ApplicationController
   private
 
   def car_params
-    params.permit(:user_id, :description, :model_info, :name, :image, :reservation_fee)
+    params.permit(:description, :model_info, :name, :image, :reservation_fee)
   end
 
   def all_cars_with_image(cars)
