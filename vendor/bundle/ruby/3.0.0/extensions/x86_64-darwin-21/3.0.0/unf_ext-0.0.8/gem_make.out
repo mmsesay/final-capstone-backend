@@ -1,0 +1,16 @@
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+/Users/Muhammad/.rbenv/versions/3.0.1/bin/ruby -I /Users/Muhammad/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20220227-45089-b1pk6w.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= clean
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\=
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8/ext/unf_ext
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 unf_ext.bundle ./.gem.20220227-45089-5a87mu

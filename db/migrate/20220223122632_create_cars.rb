@@ -5,12 +5,10 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :image
       t.text :description
       t.string :model_info
-      t.integer :reservation_fee
-      t.integer :user_id
+      t.decimal :reservation_fee
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
-
-    add_index :cars, :user_id
   end
 end

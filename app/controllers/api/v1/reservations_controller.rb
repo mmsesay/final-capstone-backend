@@ -1,6 +1,7 @@
 class Api::V1::ReservationsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  # /api/v1/users/:user_id/reservations
   def index
     @reservations = Reservation.all
     render json: @reservations
@@ -13,10 +14,10 @@ class Api::V1::ReservationsController < ApplicationController
     if @reservations
       @data = {
         reservation: @reservations,
-        reserved_car: @reservations.car,
+        reserved_car: car_object(@reservations.car),
         user_info: @reservations.user
       }
-      render json: @data, except: :image
+      render json: @data
     else
       render json: { status: 400, message: 'Invalid user_id' }
     end
