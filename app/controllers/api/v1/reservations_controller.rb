@@ -13,7 +13,7 @@ class Api::V1::ReservationsController < ApplicationController
     render json: @reservations
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations
+  # /api/v1/reservations
   def create
     @reserved_car = Reservation.find_by(car_id: params[:car_id])
 
@@ -25,6 +25,8 @@ class Api::V1::ReservationsController < ApplicationController
       }
     else
       new_reservation = Reservation.new(params_create_reservation)
+      new_reservation.start_date = Time.now
+      new_reservation.end_date = new_reservation.start_date + new_reservation.duration.day
 
       if new_reservation.save
         render json: { status: 200, message: 'car reserved successfully' }
@@ -34,7 +36,7 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  # /api/v1/reservations/:id
   def update
     @reservation = Reservation.find(params[:id])
 
@@ -45,7 +47,7 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  # /api/v1/reservations/:id
   def destroy
     @reservation = Reservation.find(params[:id]).destroy!
     render json: { status: 200, message: 'car reservation deleted' }
