@@ -9,21 +9,11 @@ class Api::V1::ReservationsController < ApplicationController
 
   # /api/v1/users/:user_id/reservations
   def show
-    @reservations = Reservation.includes(:car).find_by(user_id: params[:user_id])
-
-    if @reservations
-      @data = {
-        reservation: @reservations,
-        reserved_car: car_object(@reservations.car),
-        user_info: @reservations.user
-      }
-      render json: @data
-    else
-      render json: { status: 400, message: 'Invalid user_id' }
-    end
+    @reservations = Reservation.includes(:car).find_by(user_id: current_user.id)
+    render json: @reservations
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations
+  # /api/v1/reservations
   def create
     @reserved_car = Reservation.find_by(car_id: params[:car_id])
 
@@ -35,6 +25,8 @@ class Api::V1::ReservationsController < ApplicationController
       }
     else
       new_reservation = Reservation.new(params_create_reservation)
+      new_reservation.start_date = Time.now
+      new_reservation.end_date = new_reservation.start_date + new_reservation.duration.day
 
       if new_reservation.save
         render json: { status: 200, message: 'car reserved successfully' }
@@ -44,18 +36,18 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  # /api/v1/reservations/:id
   def update
     @reservation = Reservation.find(params[:id])
 
-    if @reservation.update(params_update_reservation)
+    if @reservation.update(params_create_reservation)
       render json: { status: 200, message: 'car reservation updated' }
     else
       render json: { status: 400, message: 'unable to update reservation' }
     end
   end
 
-  # /api/v1/users/:user_id/cars/:car_id/reservations/:id
+  # /api/v1/reservations/:id
   def destroy
     @reservation = Reservation.find(params[:id]).destroy!
     render json: { status: 200, message: 'car reservation deleted' }
@@ -66,10 +58,6 @@ class Api::V1::ReservationsController < ApplicationController
   private
 
   def params_create_reservation
-    params.permit(:duration, :user_id, :car_id)
-  end
-
-  def params_update_reservation
-    params.permit(:duration, :car_id)
+    params.permit(:user_id, :duration, :car_id)
   end
 end
