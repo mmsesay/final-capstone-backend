@@ -13,7 +13,7 @@ module Api
 
         if existing_user
           pass_current_user(existing_user) # pass the existing_user
-          render json: existing_user, status: :logged
+          render json: existing_user
         else
           new_user = User.new(params_login_credentials)
 
