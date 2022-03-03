@@ -1,0 +1,16 @@
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/debug-1.4.0/ext/debug
+/Users/Muhammad/.rbenv/versions/3.0.1/bin/ruby -I /Users/Muhammad/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20220303-17353-7zyb0f.rb extconf.rb
+creating Makefile
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/debug-1.4.0/ext/debug
+make DESTDIR\= clean
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/debug-1.4.0/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/debug-1.4.0/ext/debug
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 debug.bundle ./.gem.20220303-17353-eqj6xv/debug
