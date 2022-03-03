@@ -53,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 properties:
                   id:
                     type: integer
@@ -72,15 +72,14 @@ paths:
         "422":
           description: invalid request
     
-  "/users/{user_id}/cars/{id}":
     get:
-      summary: Get a user car
+      summary: Get a car
       tags:
         - Cars
       parameters: []
       responses:
         "200":
-          description: all user cars
+          description: a single cars
         "422":
           description: invalid request
       requestBody:
@@ -142,6 +141,7 @@ paths:
                 - user_id
                 - image
 
+  "/cars/{id}":
     patch:
       summary: Update a car
       tags:
@@ -199,8 +199,8 @@ paths:
                   - id
         "400":
           description: Unable to update car.
-    
-  "/users/{user_id}/reservations":
+
+  "/reservations":
     get:
       summary: Get a specific user reservations
       tags:
@@ -273,7 +273,6 @@ paths:
               required:
                 - user_id
 
-  "/users/{user_id}/cars/{car_id}/reservations":
     post:
       summary: Create a reservation
       tags:
@@ -301,7 +300,7 @@ paths:
                 - car_id
                 - duration
   
-  "/users/{user_id}/cars/{car_id}/reservations/{id}":
+  "/reservations/{id}":
     patch:
       summary: Update a reservation
       tags:
@@ -363,7 +362,7 @@ paths:
 
 servers:
   - url:
-    description: https://rails-cars-app.herokuapp.com/api/v1/
+    description: https://blooming-meadow-49781.herokuapp.com/api/v1
     variables:
       defaultHost:
         default: 
