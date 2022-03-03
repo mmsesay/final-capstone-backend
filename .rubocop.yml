@@ -41,5 +41,11 @@ Style/HashSyntax:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Style/WordArray:
+  Enabled: false
+Layout/HashAlignment:
+  Enabled: false
+Layout/ArgumentAlignment:
+  Enabled: false
 Lint/EmptyFile:
   Enabled: false
