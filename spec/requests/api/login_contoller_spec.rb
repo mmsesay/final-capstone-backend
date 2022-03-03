@@ -14,14 +14,14 @@ RSpec.describe '/api/v1/login_contoller', type: :request do
       }
 
       response '201', 'login successfully' do
-        let(:user) {
+        let(:user) do
           {
             id: 1,
             username: 'test user',
             created_at: '2022-03-03T11:51:46.955Z',
             updated_at: '2022-03-03T11:51:46.955Z'
           }
-        }
+        end
         run_test!
       end
     end
