@@ -27,7 +27,7 @@ class Api::V1::ReservationsController < ApplicationController
       new_reservation = Reservation.new(params_create_reservation)
       new_reservation.start_date = Time.now
       new_reservation.end_date = new_reservation.start_date + new_reservation.duration.day
-
+      new_reservation.car_name = Car.find(params[:car_id]).name
       if new_reservation.save
         render json: { status: 200, message: 'car reserved successfully' }
       else

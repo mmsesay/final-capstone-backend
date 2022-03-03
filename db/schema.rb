@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_135226) do
     t.integer "duration"
     t.date "start_date"
     t.date "end_date"
+    t.string "car_name"
     t.integer "user_id", null: false
     t.bigint "car_id", null: false
     t.datetime "created_at", null: false
