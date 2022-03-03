@@ -11,6 +11,11 @@ The project is used for project where a user can rent a flat. The endpoints give
 ## Kanban board 
 - [Kanban board link](https://github.com/mmsesay/final-capstone-backend/projects/1#card-77937550)
 
+**Initial Kanban**
+
+![](1.png)
+![](2.png)
+
 ## Built With
 
 - Ruby on Rails
