@@ -6,9 +6,11 @@
 
 The project is used for project where a user can rent a flat. The endpoints gives opportunity to a user to add and delete flats. Make reservation for a flat and remove it.
 
-[Link to Front end Project Repo](https://github.com/AmineHLub/Cars-Frontend)
-[API Documentation](https://blooming-meadow-49781.herokuapp.com/api-docs/index.html)
-[Frontend Live Demo Link](https://622110fecccae53070225c23--cars-microverse-cap.netlify.app/)
+- [Link to Front end Project Repo](https://github.com/AmineHLub/Cars-Frontend)
+
+- [API Documentation](https://blooming-meadow-49781.herokuapp.com/api-docs/index.html)
+
+- [Frontend Live Demo Link](https://622110fecccae53070225c23--cars-microverse-cap.netlify.app/)
 
 ## Kanban board 
 - [Kanban board link](https://github.com/mmsesay/final-capstone-backend/projects/1#card-77937550)
