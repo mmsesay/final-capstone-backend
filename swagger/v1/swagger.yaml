@@ -1,0 +1,368 @@
+---
+openapi: 3.0.1
+info:
+  title: Final Capstone Backend
+  version: v1
+
+  description: "This Final capstone backend is built using ruby on rails and performs CRUD operations for a car reservation and management service."
+
+paths:
+  "/login":
+    post:
+      summary: Logs in user
+      tags:
+        - Auth
+      parameters: []
+      responses:
+        "201":
+          description: Login successfully
+        "422":
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+
+  "/logout":
+    delete:
+      summary: Logs out a user
+      tags:
+        - Auth
+      parameters: []
+      responses:
+        "201":
+          description: Login successfully
+        "422":
+          description: invalid request
+
+  "/cars":
+    get:
+      summary: Gets all cars
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "200":
+          description: All found cars
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  model_info:
+                    type: string
+                  reservation_fee:
+                    type: string
+                  user_id:
+                    type: integer
+                  image:
+                    type: string
+        "422":
+          description: invalid request
+    
+    get:
+      summary: Get a car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "200":
+          description: a single cars
+        "422":
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+
+    post:
+      summary: Create a car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "201":
+          description: new car created successfully
+        "400":
+          description: could not create car
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+              required:
+                - name
+                - description
+                - model_info
+                - reservation_fee
+                - user_id
+                - image
+
+  "/cars/{id}":
+    patch:
+      summary: Update a car
+      tags:
+        - Cars
+      parameters: []
+      responses:
+        "201":
+          description: Car successfully updated.
+        "400":
+          description: Unable to update car.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                description:
+                  type: string
+                model_info:
+                  type: string
+                reservation_fee:
+                  type: string
+                user_id:
+                  type: integer
+                image:
+                  type: string
+
+    delete:
+      summary: Delete a specified car
+      tags:
+        - Cars
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+
+            type: integer
+      responses:
+        "200":
+          description: car deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+
+                required:
+                  - id
+        "400":
+          description: Unable to update car.
+
+  "/reservations":
+    get:
+      summary: Get a specific user reservations
+      tags:
+        - Reservations
+      parameters: []
+      responses:
+        "200":
+          description: all user reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    reservation:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        duration:
+                          type: integer
+                        user_id:
+                          type: integer
+                        car_id:
+                          type: integer
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                    reserved_car:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        model_info:
+                          type: string
+                        reservation_fee:
+                          type: string
+                        user_id:
+                          type: integer
+                        image:
+                          type: string
+                    user_info:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        username:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                    
+        "422":
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+              required:
+                - user_id
+
+    post:
+      summary: Create a reservation
+      tags:
+        - Reservations
+      parameters: []
+      responses:
+        "201":
+          description: car reserved successfully
+        "400":
+          description: could not create reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                car_id:
+                  type: integer
+                duration:
+                  type: string
+              required:
+                - user_id
+                - car_id
+                - duration
+  
+  "/reservations/{id}":
+    patch:
+      summary: Update a reservation
+      tags:
+        - Reservations
+      parameters: []
+      responses:
+        "200":
+          description: car reservation updated
+        "400":
+          description: unable to update reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                car_id:
+                  type: integer
+                duration:
+                  type: string
+              required:
+                - car_id
+                - user_id
+                - duration
+
+    delete:
+      summary: Delete a specified reservation
+      tags:
+        - Reservations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+
+            type: integer
+      responses:
+        "200":
+          description: car reservation deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  car_id:
+                    type: integer
+                required:
+                  - id
+                  - car_id
+                  - user_id
+        "400":
+          description: no match found for reservation with id {id}
+
+servers:
+  - url:
+    description: https://blooming-meadow-49781.herokuapp.com/api/v1
+    variables:
+      defaultHost:
+        default: 

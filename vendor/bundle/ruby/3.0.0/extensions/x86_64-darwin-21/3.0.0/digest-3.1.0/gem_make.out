@@ -1,0 +1,18 @@
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+/Users/Muhammad/.rbenv/versions/3.0.1/bin/ruby -I /Users/Muhammad/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20220227-45089-1quxgb.rb extconf.rb
+checking for u_int8_t... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\= clean
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\=
+compiling sha2init.c
+compiling sha2.c
+linking shared-object digest/sha2.bundle
+
+current directory: /Users/Muhammad/Projects/rails/final-capstone-backend/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 sha2.bundle ./.gem.20220227-45089-bplwkg/digest

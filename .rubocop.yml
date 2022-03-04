@@ -7,54 +7,45 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "vendor/bundle/**/*"
 
   DisplayCopNames: true
 
-Layout/LineLength:
-  Max: 120
-Metrics/MethodLength:
-  Include:
-    - "app/controllers/*"
-    - "app/models/*"
-  Max: 20
-Metrics/AbcSize:
-  Include:
-    - "app/controllers/*"
-    - "app/models/*"
-  Max: 50
-Metrics/ClassLength:
-  Max: 150
-Metrics/BlockLength:
-  IgnoredMethods: ['describe']
-  Max: 30
-
 Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/ParameterLists:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 1000000
+Metrics/CyclomaticComplexity:
+  Max: 1000000
+Metrics/AbcSize:
+  Max: 1000000
+Metrics/ModuleLength:
+  Max: 1000000
+Style/GlobalVars:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashSyntax:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
-Style/EachForSimpleLoop:
+Style/WordArray:
   Enabled: false
-Style/AndOr:
-  Enabled: false
-Style/DefWithParentheses:
-  Enabled: false
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
-
 Layout/HashAlignment:
-  EnforcedColonStyle: key
-Layout/ExtraSpacing:
-  AllowForAlignment: false
-Layout/MultilineMethodCallIndentation:
-  Enabled: true
-  EnforcedStyle: indented
-Lint/RaiseException:
   Enabled: false
-Lint/StructNewOverride:
+Layout/ArgumentAlignment:
   Enabled: false
-Style/HashEachMethods:
-  Enabled: false
-Style/HashTransformKeys:
-  Enabled: false
-Style/HashTransformValues:
+Lint/EmptyFile:
   Enabled: false
